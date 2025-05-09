@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['*']
 
 DATE_FORMAT = 'd/m/Y'
 
-
+APPEND_SLASH=False
 # Application definition
 
 INSTALLED_APPS = [

@@ -28,9 +28,12 @@ from rest_framework_simplejwt.views import (
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Ecommerce API",
+        title="API de Integración",
         default_version='v1',
-        description="API documentation for the Ecommerce project",
+        description="Documentación de la API de Integración",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="soporte@example.com"),
+        license=openapi.License(name="MIT License"),
     ),
     public=True,
     permission_classes=(AllowAny,),
