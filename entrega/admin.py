@@ -1,3 +1,23 @@
 from django.contrib import admin
-
+from .models import *
 # Register your models here.
+admin.site.register(Admin)
+admin.site.register(AuthGroup)
+admin.site.register(AuthGroupPermissions)
+admin.site.register(AuthPermission)
+admin.site.register(AuthUser)
+admin.site.register(AuthUserGroups)
+admin.site.register(Billinginfo)
+admin.site.register(Cart)
+admin.site.register(Category)
+admin.site.register(Customer)
+admin.site.register(DjangoAdminLog)
+admin.site.register(DjangoContentType)
+admin.site.register(DjangoMigrations)
+admin.site.register(DjangoSession)
+admin.site.register(Order)
+admin.site.register(Orderdetails)
+admin.site.register(Product)
+admin.site.register(Shipper)
+admin.site.register(Supplier)
+admin.site.register(User)

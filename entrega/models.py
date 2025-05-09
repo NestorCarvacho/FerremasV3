@@ -15,7 +15,7 @@ class Admin(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'admin'
+        db_table = 'Admin'
 
 
 class AuthGroup(models.Model):
@@ -98,7 +98,7 @@ class Billinginfo(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'billinginfo'
+        db_table = 'BillingInfo'
 
 
 class Cart(models.Model):
@@ -109,7 +109,7 @@ class Cart(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'cart'
+        db_table = 'Cart'
 
 
 class Category(models.Model):
@@ -120,7 +120,7 @@ class Category(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'category'
+        db_table = 'Category'
 
 
 class Customer(models.Model):
@@ -130,7 +130,7 @@ class Customer(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'customer'
+        db_table = 'Customer'
 
 
 class DjangoAdminLog(models.Model):
@@ -189,7 +189,7 @@ class Order(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'order'
+        db_table = 'Order'
 
 
 class Orderdetails(models.Model):
@@ -201,7 +201,7 @@ class Orderdetails(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'orderdetails'
+        db_table = 'OrderDetails'
 
 
 class Personalinfo(models.Model):
@@ -215,7 +215,7 @@ class Personalinfo(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'personalinfo'
+        db_table = 'PersonalInfo'
 
 
 class Product(models.Model):
@@ -233,7 +233,7 @@ class Product(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'product'
+        db_table = 'Product'
 
 
 class Shipper(models.Model):
@@ -243,7 +243,7 @@ class Shipper(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'shipper'
+        db_table = 'Shipper'
 
 
 class Supplier(models.Model):
@@ -256,7 +256,7 @@ class Supplier(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'supplier'
+        db_table = 'Supplier'
 
 
 class User(models.Model):
@@ -264,4 +264,4 @@ class User(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'user'
+        db_table = 'User'
