@@ -21,8 +21,8 @@ Antes de comenzar, asegúrate de tener instalado:
 ### 1. Clona el repositorio
 
 ```bash
-git clone https://github.com/tu_usuario/tu_repo.git
-cd tu_repo
+git clone https://github.com/NestorCarvacho/FerremasV3.git
+cd ~/FerremasV3
 ```
 
 ### 2. Instala las dependencias
