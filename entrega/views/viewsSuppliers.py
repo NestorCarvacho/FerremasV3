@@ -44,16 +44,19 @@ class SupplierGetPostView(APIView):
         with connection.cursor() as cursor:
             cursor.callproc('sp_get_suppliers')
             suppliers = cursor.fetchall()
-        
+               
         # Convierte los resultados en un formato JSON
         suppliers_list = [
             {
-                'supplier_id': row[0],
-                'user_id': row[1],
-                'contact_name': row[2],
-                'contact_title': row[3],
-                'address': row[4],
-                'phone': row[5],
+                'supplier id': row[0],
+                'contact name': row[1],
+                'contact title': row[2],
+                'address': row[3],
+                'phone': row[4],
+                'email': row[5],
+                'county': row[6],
+                'city': row[7],
+                'postal code': row[8],
             }
             for row in suppliers
         ]

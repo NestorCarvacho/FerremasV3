@@ -33,7 +33,7 @@ class ProductGetPostView(APIView):
             type=openapi.TYPE_ARRAY,
             items=product_schema
         ))}
-    )
+    )    
     def get(self, request):
         with connection.cursor() as cursor:
             cursor.callproc('sp_get_products')
@@ -42,16 +42,16 @@ class ProductGetPostView(APIView):
         # Convierte los resultados en un formato JSON
         product_list = [
             {
-                'product_id': row[0],
-                'product_name': row[1],
-                'supplier_id': row[2],
-                'category_id': row[3],
-                'quantity_per_unit': row[4],
-                'unit_price': row[5],
-                'units_in_order': row[6],
-                'units_in_stock': row[7],
-                'reorder_level': row[8],
-                'discount': row[9],
+                'product id': row[0],
+                'product name': row[1],
+                'category name': row[2],
+                'unit price': '$' + str(row[3]),
+                'quantity per unit': row[4],
+                'units in stock': row[5],
+                'reorder level': row[6],
+                'discount': row[7],
+                'contact name': row[8],
+                'contact title': row[9],
             }
             for row in products
         ]
@@ -72,7 +72,7 @@ class ProductGetPostView(APIView):
                 'reorder_level': openapi.Schema(type=openapi.TYPE_INTEGER, description='Nivel de reorden'),
                 'discount': openapi.Schema(type=openapi.TYPE_NUMBER, format=openapi.FORMAT_FLOAT, description='Descuento'),
             },
-            required=['product_name', 'supplier_id', 'category_id']
+            required=['product_name', 'supplier_id', 'category_id','unit_price', 'quantity_per_unit', 'units_in_order', 'units_in_stock', 'reorder_level', 'discount']
         ),
         responses={201: "Product added successfully"}
     )
