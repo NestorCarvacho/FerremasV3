@@ -106,7 +106,7 @@ BEGIN
             sp.contact_title
     FROM Product pr
     JOIN supplier sp on pr.supplier_id = sp.supplier_id
-    JOIN category ca on pr.category_id = ca.category_id
+    JOIN category ca on pr.category_id = ca.category_id;
 END //
 
 CREATE PROCEDURE sp_get_product(IN pid INT)
@@ -192,7 +192,7 @@ BEGIN
         pein.postal_code
     FROM Customer cu
     JOIN `user` us on cu.user_id = us.id
-    JOIN personalInfo pein on us.personal_info_id = pein.personal_id
+    JOIN personalInfo pein on us.personal_info_id = pein.personal_id;
 END //
 
 CREATE PROCEDURE sp_get_customer(IN cid INT)
@@ -369,7 +369,7 @@ BEGIN
         ca.total_price 
     FROM cart ca
     JOIN customer cu on ca.customer_id = cu.id
-    JOIN product pr on ca.product_id = pr.product_id
+    JOIN product pr on ca.product_id = pr.product_id;
 END //
 
 CREATE PROCEDURE sp_get_Cart(IN cid INT)
@@ -644,7 +644,18 @@ END //
 -- ==== SUPPLIERS ====
 CREATE PROCEDURE sp_get_suppliers()
 BEGIN
-    SELECT * FROM Supplier;
+    SELECT	su.supplier_id,
+            su.contact_name,
+            su.contact_title,
+            su.address,
+            su.phone,
+            pein.email,
+            pein.county,
+            pein.city,
+            pein.postal_code
+            FROM Supplier su
+    JOIN `user` us on su.user_id = us.id
+    JOIN personalInfo pein on us.personal_info_id = pein.personal_id;
 END //
 
 CREATE PROCEDURE sp_get_supplier(IN sid INT)
