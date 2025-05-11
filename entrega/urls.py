@@ -1,5 +1,5 @@
 from django.urls import path, include, re_path
-from .views import viewsProducts, viewsCategories, viewsSuppliers
+from .views import viewsProducts, viewsCategories, viewsSuppliers, viewsCustomer
 from django.conf import settings
 from django.conf.urls.static import static
 from drf_yasg.views import get_schema_view
@@ -22,6 +22,9 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
+    path('customers/', viewsCustomer.CustomerGetPostView.as_view(), name='customers-get-post'),
+    path('customers/<int:suppliers_id>/', viewsCustomer.CustomerPutDeleteView.as_view(), name='customers-put-delete'),
+    
     path('suppliers/', viewsSuppliers.SupplierGetPostView.as_view(), name='suppliers-get-post'),
     path('suppliers/<int:suppliers_id>/', viewsSuppliers.SupplierPutDeleteView.as_view(), name='supplier-put-delete'),
     
@@ -34,4 +37,11 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    
+    
+    #TESTING
+    path('products/', viewsProducts.ProductGetPostView.as_view(), name='product-list'),
+    path('products/create/', viewsProducts.ProductGetPostView.as_view(), name='product-create'),
+    path('products/update/<int:product_id>/', viewsProducts.ProductPutDeleteView.as_view(), name='product-update'),
+    path('products/delete/<int:product_id>/', viewsProducts.ProductPutDeleteView.as_view(), name='product-delete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
