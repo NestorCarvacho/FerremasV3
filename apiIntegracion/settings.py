@@ -87,6 +87,12 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
 }
+
+SIMPLE_JWT = {
+    # 'AUTH_HEADER_TYPES': ('Bearer',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),  # Duración del token de acceso
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),    # Duración del token de refresco
+}
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 

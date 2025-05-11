@@ -1,5 +1,5 @@
 from django.urls import path, include, re_path
-from .views import viewsProducts, viewsCategories
+from .views import viewsProducts, viewsCategories, viewsSuppliers
 from django.conf import settings
 from django.conf.urls.static import static
 from drf_yasg.views import get_schema_view
@@ -20,12 +20,16 @@ schema_view = get_schema_view(
     permission_classes=(AllowAny,),
 )
 
+
 urlpatterns = [
-    path('products/', viewsProducts.ProductGetPostView.as_view(), name='product-get'),
+    path('suppliers/', viewsSuppliers.SupplierGetPostView.as_view(), name='suppliers-get-post'),
+    path('suppliers/<int:suppliers_id>/', viewsSuppliers.SupplierPutDeleteView.as_view(), name='supplier-put-delete'),
+    
+    path('products/', viewsProducts.ProductGetPostView.as_view(), name='product-get-post'),
     path('products/<int:product_id>/', viewsProducts.ProductPutDeleteView.as_view(), name='product-put'),
     
-    path('categories/', viewsCategories.CategoryGetPostView.as_view(), name='category-get'),
-    path('categories/<int:category_id>/', viewsCategories.CategoryPutDeleteView.as_view(), name='category-put'),
+    path('categories/', viewsCategories.CategoryGetPostView.as_view(), name='category-get-post'),
+    path('categories/<int:category_id>/', viewsCategories.CategoryPutDeleteView.as_view(), name='category-put-delete'),
     
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
