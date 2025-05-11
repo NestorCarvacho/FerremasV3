@@ -94,7 +94,7 @@ DROP PROCEDURE IF EXISTS sp_delete_orderStatus;
 DELIMITER //
 CREATE PROCEDURE sp_get_products()
 BEGIN
-    SELECT 	pr.product_id,
+    SELECT  pr.product_id,
             pr.product_name,
             ca.category_name,
             pr.unit_price,
@@ -105,13 +105,13 @@ BEGIN
             sp.contact_name,
             sp.contact_title
     FROM Product pr
-    JOIN supplier sp on pr.supplier_id = sp.supplier_id
-    JOIN category ca on pr.category_id = ca.category_id;
+    JOIN Supplier sp on pr.supplier_id = sp.supplier_id
+    JOIN Category ca on pr.category_id = ca.category_id;
 END //
 
 CREATE PROCEDURE sp_get_product(IN pid INT)
 BEGIN
-    SELECT 	pr.product_id,
+    SELECT  pr.product_id,
             pr.product_name,
             ca.category_name,
             pr.unit_price,
@@ -122,8 +122,8 @@ BEGIN
             sp.contact_name,
             sp.contact_title
     FROM Product pr
-    JOIN supplier sp on pr.supplier_id = sp.supplier_id
-    JOIN category ca on pr.category_id = ca.category_id
+    JOIN Supplier sp on pr.supplier_id = sp.supplier_id
+    JOIN Category ca on pr.category_id = ca.category_id
     WHERE pr.product_id = pid;
 END //
 
@@ -191,8 +191,8 @@ BEGIN
         pein.city,
         pein.postal_code
     FROM Customer cu
-    JOIN `user` us on cu.user_id = us.id
-    JOIN personalInfo pein on us.personal_info_id = pein.personal_id;
+    JOIN `User` us on cu.user_id = us.id
+    JOIN PersonalInfo pein on us.personal_info_id = pein.personal_id;
 END //
 
 CREATE PROCEDURE sp_get_customer(IN cid INT)
@@ -206,8 +206,8 @@ BEGIN
         pein.city,
         pein.postal_code
     FROM Customer cu
-    JOIN `user` us on cu.user_id = us.id
-    JOIN personalInfo pein on us.personal_info_id = pein.personal_id
+    JOIN `User` us on cu.user_id = us.id
+    JOIN PersonalInfo pein on us.personal_info_id = pein.personal_id
     WHERE cu.id = cid;
 END //
 
@@ -654,7 +654,7 @@ BEGIN
             pein.city,
             pein.postal_code
             FROM Supplier su
-    JOIN `user` us on su.user_id = us.id
+    JOIN `User` us on su.user_id = us.id
     JOIN personalInfo pein on us.personal_info_id = pein.personal_id;
 END //
 

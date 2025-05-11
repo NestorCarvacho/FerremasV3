@@ -1,5 +1,23 @@
 USE integracionEcomerce;
 
+-- Eliminar tablas si ya existen
+DROP TABLE IF EXISTS OrderStatus;
+DROP TABLE IF EXISTS OrderShipper;
+DROP TABLE IF EXISTS Payment;
+DROP TABLE IF EXISTS BillingInfo;
+DROP TABLE IF EXISTS Admin;
+DROP TABLE IF EXISTS OrderDetails;
+DROP TABLE IF EXISTS `Order`;
+DROP TABLE IF EXISTS Shipper;
+DROP TABLE IF EXISTS Cart;
+DROP TABLE IF EXISTS Product;
+DROP TABLE IF EXISTS Category;
+DROP TABLE IF EXISTS Supplier;
+DROP TABLE IF EXISTS Customer;
+DROP TABLE IF EXISTS `User`;
+DROP TABLE IF EXISTS PersonalInfo;
+
+-- Crear tablas
 CREATE TABLE PersonalInfo (
     personal_id INT AUTO_INCREMENT PRIMARY KEY,
     county VARCHAR(100),
@@ -113,7 +131,7 @@ CREATE TABLE BillingInfo (
     FOREIGN KEY (customer_id) REFERENCES Customer(id) ON DELETE CASCADE
 );
 
-create table Payment (
+CREATE TABLE Payment (
     payment_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,
     payment_date DATETIME,
@@ -122,7 +140,7 @@ create table Payment (
     FOREIGN KEY (order_id) REFERENCES `Order`(order_id) ON DELETE CASCADE
 );
 
-create table OrderShipper (
+CREATE TABLE OrderShipper (
     order_id INT,
     shipper_id INT,
     tracking_number VARCHAR(50),
@@ -131,7 +149,7 @@ create table OrderShipper (
     FOREIGN KEY (shipper_id) REFERENCES Shipper(shipper_id) ON DELETE CASCADE
 );
 
-create table OrderStatus (
+CREATE TABLE OrderStatus (
     order_id INT,
     status VARCHAR(50),
     status_date DATETIME,

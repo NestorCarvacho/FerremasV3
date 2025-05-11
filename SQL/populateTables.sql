@@ -25,7 +25,7 @@ INSERT INTO PersonalInfo (county, address, phone, email, city, postal_code) VALU
 ('Portland', '1111 Burnside St', '555-5432', 'KellyKapoor@api-integracion.com', 'Portland', '97201'),
 ('Las Vegas', '1212 Fremont St', '555-9870', 'RyanHoward@api-integracion.com', 'Las Vegas', '89101');
 
-insert into `User` (PersonalInfo) values
+insert into `User` (personal_info_id) values
 (1),
 (2),
 (3),
@@ -77,7 +77,7 @@ INSERT INTO Cart (customer_id, product_id, num_of_products, total_price) VALUES
 (4, 4, 1, 299.99),
 (5, 5, 3, 47.97);
 
-INSERT INTO `Order` (customer_id, order_date, required_date, shipped_date, freight, shipper_id, ) VALUES
+INSERT INTO `Order` (customer_id, order_date, required_date, shipped_date, freight, shipper_id) VALUES
 (1, '2023-10-01', '2023-10-05', NULL, 5.00, 1),
 (2, '2023-10-02', '2023-10-06', NULL, 7.50, 2),
 (3, '2023-10-03', '2023-10-07', NULL, 15.00, 3),
@@ -112,9 +112,9 @@ INSERT INTO OrderStatus (order_id, status, status_date) VALUES
 (4, 'Cancelled', '2023-10-04'),
 (5, 'Pending', '2023-10-05');
 
-INSERT INTO `Admin` (admin_name, email, password) VALUES
-('Admin1', 'admin1@api-integracion.com', 'password1'),
-('Admin2', 'admin2@api-integracion.com', 'password2'),
-('Admin3', 'admin3@api-integracion.com', 'password3'),
-('Admin4', 'admin4api-integracion.com', 'password4'),
-('Admin5', 'admin5@api-integracion.com', 'password5');
+INSERT INTO `Admin` (admin_name, admin_password) VALUES
+('Admin1', 'password1'),
+('Admin2', 'password2'),
+('Admin3', 'password3'),
+('Admin4', 'password4'),
+('Admin5', 'password5');
