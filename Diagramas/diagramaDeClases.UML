@@ -1,0 +1,110 @@
+@startuml
+class Personalinfo {
+    +personal_id : int
+    county : str
+    address : str
+    phone : str
+    email : str
+    city : str
+    postal_code : str
+}
+
+class User {
+    +id : int
+    personal_info : Personalinfo [1]
+}
+
+class Customer {
+    +id : int
+    user : User [1]
+    last_name : str
+    contact_name : str
+}
+
+class Supplier {
+    +supplier_id : int
+    user : User [1]
+    contact_name : str
+    contact_title : str
+    address : str
+    phone : str
+}
+
+class Category {
+    +category_id : int
+    category_name : str
+    description : str
+    picture : str
+}
+
+class Product {
+    +product_id : int
+    product_name : str
+    supplier : Supplier [0..1]
+    category : Category [0..1]
+    quantity_per_unit : str
+    unit_price : decimal
+    units_in_order : int
+    units_in_stock : int
+    reorder_level : int
+    discount : decimal
+    picture : str
+}
+
+class Cart {
+    +id : int
+    customer : Customer [0..1]
+    product : Product [0..1]
+    num_of_products : int
+    total_price : decimal
+}
+
+class Billinginfo {
+    +billing_id : int
+    customer : Customer [1]
+    billing_address : str
+    credit_card_number : str
+    credit_card_pin : str
+    credit_card_exp_date : date
+    bill_date : date
+}
+
+class Shipper {
+    +shipper_id : int
+    company_name : str
+    phone : str
+}
+
+class Order {
+    +order_id : int
+    customer : Customer [0..1]
+    order_date : datetime
+    required_date : datetime
+    shipped_date : datetime
+    freight : decimal
+    shipper : Shipper [0..1]
+}
+
+class Orderdetails {
+    +id : int
+    order : Order [0..1]
+    product : Product [0..1]
+    unit_price : decimal
+    quantity : int
+    discount : decimal
+}
+
+' Relaciones
+User "1" -- "0..1" Personalinfo
+Customer "1" -- "1" User
+Supplier "1" -- "1" User
+Product "0..1" -- "1" Supplier
+Product "0..1" -- "1" Category
+Cart "0..1" -- "1" Customer
+Cart "0..1" -- "1" Product
+Billinginfo "1" -- "1" Customer
+Order "0..1" -- "1" Customer
+Order "0..1" -- "1" Shipper
+Orderdetails "0..1" -- "1" Order
+Orderdetails "0..1" -- "1" Product
+@enduml
